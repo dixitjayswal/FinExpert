@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Clock, Send } from 'lucide-react';
+import { MapPin, Phone, Clock, Send, Loader2 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageBanner from '@/components/PageBanner';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 
 const contactInfo = [
@@ -40,28 +41,52 @@ const Contact = () => {
     message: '',
     consent: false,
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.consent) {
       toast({
-        title: 'Please check the consent box',
-        description: 'You must agree to the terms to proceed.',
+        title: 'Consent Required',
+        description: 'Please agree to the terms to proceed.',
         variant: 'destructive',
       });
       return;
     }
+
+    setIsSubmitting(true);
+
+    // Construct mailto link
+    const subject = encodeURIComponent(`Contact Form: ${formData.subject}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
+    );
+    const mailtoLink = `mailto:djayswal023@gmail.com?subject=${subject}&body=${body}`;
+
+    // Simulate short delay for UX
+    await new Promise((resolve) => setTimeout(resolve, 800));
+
+    setIsSubmitting(false);
+
+    // Open email client
+    window.location.href = mailtoLink;
+
     toast({
       title: 'Message Sent!',
       description: 'We will get back to you within 24 hours.',
     });
+
+    // Reset form
     setFormData({ name: '', email: '', phone: '', subject: '', message: '', consent: false });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target;
-    const checked = (e.target as HTMLInputElement).checked;
-    setFormData(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleCheckboxChange = (checked: boolean) => {
+    setFormData(prev => ({ ...prev, consent: checked }));
   };
 
   return (
@@ -180,24 +205,25 @@ const Contact = () => {
                   className="bg-white border-slate/20 focus:border-gold focus:ring-gold/20 resize-none"
                 />
 
-                <div className="flex items-start space-x-2">
-                  <input
-                    type="checkbox"
-                    name="consent"
+                <div className="flex items-start space-x-3">
+                  <Checkbox
                     id="consent"
                     checked={formData.consent}
-                    onChange={handleChange}
+                    onCheckedChange={handleCheckboxChange}
                     className="mt-1"
-                    required
                   />
-                  <label htmlFor="consent" className="text-sm text-muted-foreground leading-tight">
+                  <label htmlFor="consent" className="text-sm text-muted-foreground leading-tight cursor-pointer">
                     I agree to receive informational and promotional email communication from Anchor Business Valuations & Financial Services, LLC.
                   </label>
                 </div>
 
-                <Button type="submit" className="btn-cta">
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Message
+                <Button type="submit" className="btn-cta" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  ) : (
+                    <Send className="w-4 h-4 mr-2" />
+                  )}
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </motion.div>

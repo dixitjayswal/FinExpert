@@ -54,6 +54,7 @@ const navItems: NavItem[] = [
     hasDropdown: true,
     dropdownItems: [
       { name: 'Events', href: '/events' },
+      { name: 'Blogs', href: '/blog' },
       { name: 'Articles & Podcasts', href: '/articles' },
       { name: 'FAQ', href: '/faq' },
     ]
