@@ -15,49 +15,41 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: 'What services does Finxpert offer?',
-      answer: 'Finxpert offers a comprehensive range of financial consulting services including Corporate Finance, Investment Banking, Wealth Management, Tax Consulting, Risk Assessment, and Strategic Planning. Our services are tailored to meet the unique needs of businesses and individuals seeking financial excellence.',
+      question: 'What type of report do I need? (i.e., Calculation Valuation Report, Summary Report, Detailed Report)',
+      answer: 'The type of report needed can be determined with the assistance of a certified valuation expert and/or counsel. There are several different types of valuation reports, each of which are offered at a different price point and require varying amounts of time to complete. The 2 main types of reports that ABVFS offers include: Calculation Reports (calculation of value or calculated value) and Summary Report (conclusion of value).',
     },
     {
-      question: 'How do I get started with Finxpert?',
-      answer: 'Getting started is simple! You can contact us through our website, schedule a free consultation, or call our office directly. During the initial consultation, we\'ll discuss your financial goals, assess your current situation, and recommend the best services to meet your needs.',
+      question: 'When are business valuations used?',
+      answer: 'Business valuations are required for many reasons such as mergers & acquisitions, divorce, estate planning, bankruptcy and financial auditing. The valuation appraiser looks at a company’s profitability, risk, location, competition, history, applicable macro/micro economics, customers, assets, services offered, among other factors to determine an entity’s value.',
     },
     {
-      question: 'What makes Finxpert different from other financial consultants?',
-      answer: 'Finxpert stands out through our personalized approach, experienced team of professionals with 16+ years of expertise, proven track record of success, and commitment to client satisfaction. We combine traditional financial wisdom with innovative solutions to deliver exceptional results.',
+      question: 'How to determine the selling price and value?',
+      answer: 'There is no singular way to determine what a business is worth which is why the retainment of an experienced business valuation expert is imperative when trying to apply a value to an entity. A business owner may believe that their business is worth a lot more or less than the business valuation determined by the appraiser. Frequently, this is due to the fact that the business owner incorporates subjective, non-financial or emotional factors into the valuation that the potential interested party might not recognize as value.',
     },
     {
-      question: 'Are your services suitable for small businesses?',
-      answer: 'Absolutely! We serve clients of all sizes, from startups and small businesses to large corporations. Our flexible service packages are designed to accommodate various budgets and needs, ensuring every client receives the attention and expertise they deserve.',
+      question: 'What is the Fair Market Value Versus Fair Value?',
+      answer: 'Fair market value (FMV) is the price that property would sell for on the open market. It is the price that would be agreed on between a willing buyer and a willing seller, with neither being required to act, and both having reasonable knowledge of the relevant facts. Fair Value is typically defined or imposed by a third party (e.g., by law, regulation, contract, or financial reporting standard-setting bodies) and is typically defined as the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date.',
     },
     {
-      question: 'How are your fees structured?',
-      answer: 'Our fees vary depending on the services required and the complexity of your financial situation. We offer transparent pricing with no hidden fees. During your initial consultation, we\'ll provide a detailed breakdown of costs so you can make an informed decision.',
+      question: 'What is a "certified" valuation analyst and “accredited” in business Valuations?',
+      answer: 'The National Association of Certified Valuators and Analysts (“NACVA”) is one of the most well respected and known business valuation associations. NACVA’s CVA designation is the only valuation credential accredited by the National Commission for Certifying Agencies. The Accredited in Business Valuation (ABV®) credential is granted exclusively by the AICPA to CPAs and qualified valuation professionals who demonstrate considerable expertise in valuation.',
     },
     {
-      question: 'Do you offer virtual consultations?',
-      answer: 'Yes, we offer both in-person and virtual consultations to accommodate our clients\' preferences and schedules. Our digital-first approach ensures you can access our expertise from anywhere in the world.',
-    },
-    {
-      question: 'How long does a typical engagement last?',
-      answer: 'The duration of our engagements varies based on the scope of services. Some projects, like tax filing, may be completed within weeks, while ongoing services like wealth management are continuous relationships. We\'ll provide timeline estimates during our initial discussions.',
-    },
-    {
-      question: 'Is my financial information kept confidential?',
-      answer: 'Absolutely. Client confidentiality is paramount at Finxpert. We adhere to strict privacy policies and industry regulations to ensure all your financial information is protected. Our team is bound by professional confidentiality agreements.',
+      question: 'What is a Qualified Appraiser?',
+      answer: 'A qualified appraiser is an individual with verifiable education and experience in valuing the type of property for which the appraisal is performed. They must earn an appraisal designation from a generally recognized professional appraiser organization or meet minimum education and experience requirements.',
     },
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <PageBanner 
-        title="Frequently Asked Questions" 
+      <PageBanner
+        title="Frequently Asked Questions"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Pages', href: '/about' },
           { label: 'FAQ' }
-        ]} 
+        ]}
       />
 
       {/* FAQ Section */}
@@ -71,7 +63,7 @@ const FAQ = () => {
               Frequently Asked Questions
             </h2>
             <p className="text-muted-foreground font-inter max-w-2xl mx-auto">
-              Find answers to common questions about our services, process, and how we can help 
+              Find answers to common questions about our services, process, and how we can help
               you achieve your financial goals.
             </p>
           </div>
@@ -101,7 +93,7 @@ const FAQ = () => {
                     )}
                   </div>
                 </button>
-                
+
                 <motion.div
                   initial={false}
                   animate={{
@@ -133,7 +125,7 @@ const FAQ = () => {
               Still Have Questions?
             </h2>
             <p className="text-muted-foreground font-inter max-w-2xl mx-auto mb-8">
-              Can't find the answer you're looking for? Our team is here to help. 
+              Can't find the answer you're looking for? Our team is here to help.
               Reach out to us and we'll get back to you as soon as possible.
             </p>
             <a href="/contact" className="inline-flex items-center gap-2 bg-accent text-primary px-8 py-4 rounded-lg font-inter font-semibold hover:bg-accent/90 transition-colors">

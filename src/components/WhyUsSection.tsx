@@ -1,37 +1,37 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Lightbulb, Clock, Shield, HeartHandshake, Zap, Users } from 'lucide-react';
+import { Building2, Stethoscope, Briefcase, ShoppingBag, Utensils, Gavel } from 'lucide-react';
 
 const features = [
   {
-    icon: Lightbulb,
-    title: 'Innovative Solutions',
-    description: 'Cutting-edge strategies tailored to modern financial challenges.',
+    icon: Stethoscope,
+    title: 'Healthcare',
+    description: 'Specialized in Medical Practices, Surgery Centers, Dental, Urgent Care, and Elder Care facilities.',
   },
   {
-    icon: Clock,
-    title: 'Time Efficiency',
-    description: 'Quick turnaround times without compromising on quality.',
+    icon: Building2,
+    title: 'Construction & Real Estate',
+    description: 'Expertise in Manufacturing, Facilities Services, HVAC, Landscaping, and Trade Contractors.',
   },
   {
-    icon: Shield,
-    title: 'Secure Process',
-    description: 'Your data and investments are protected with top-tier security.',
+    icon: Utensils,
+    title: 'Food & Beverage',
+    description: 'Valuation services for Restaurants, Franchises, Bars, and Concession Services.',
   },
   {
-    icon: HeartHandshake,
-    title: 'Client-Focused',
-    description: 'Personalized attention and dedicated support for every client.',
+    icon: ShoppingBag,
+    title: 'Retail & Franchise',
+    description: 'Experience with Apparel, Accessories, Dry Cleaners, and various Retail Franchises.',
   },
   {
-    icon: Zap,
-    title: 'Fast Execution',
-    description: 'Swift implementation of strategies to capitalize on opportunities.',
+    icon: Briefcase,
+    title: 'Professional Services',
+    description: 'Serving Law Firms, IT/Software Companies, Financial Advisors, and Marketing Agencies.',
   },
   {
-    icon: Users,
-    title: 'Expert Team',
-    description: 'Certified professionals with decades of combined experience.',
+    icon: Gavel,
+    title: 'Legal & Specialized',
+    description: 'Litigation support for Matrimonial matters, Shareholder disputes, and Estate planning.',
   },
 ];
 
@@ -52,7 +52,7 @@ const WhyUsSection = () => {
           >
             <div className="h-px w-12 bg-gold" />
             <span className="text-gold font-inter text-sm font-medium tracking-widest uppercase">
-              Why Choose Us
+              Industry Expertise
             </span>
             <div className="h-px w-12 bg-gold" />
           </motion.div>
@@ -63,7 +63,7 @@ const WhyUsSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4"
           >
-            The Advantages We Bring
+            Sectors We Serve
           </motion.h2>
 
           <motion.p
@@ -72,7 +72,7 @@ const WhyUsSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-slate font-inter"
           >
-            Experience the difference of working with a truly dedicated financial partner.
+            Extensive experience across diverse industries with a specialized focus on healthcare.
           </motion.p>
         </div>
 

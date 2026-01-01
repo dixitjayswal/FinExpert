@@ -5,36 +5,84 @@ import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 const testimonials = [
   {
     id: 1,
-    name: 'Sarah Mitchell',
-    role: 'CEO, TechVentures',
-    content: 'Finxpert transformed our financial strategy completely. Their expertise in investment management helped us achieve a 40% growth in our portfolio within the first year.',
+    name: 'Kimberly Philbin',
+    role: 'Founder, Vision 360 Capital Partners',
+    content: 'Trisch Garthoeffner is highly knowledgeable and is first to come to mind when I have a client needing business valuation, M&A, or selling consultation services.',
     rating: 5,
-    image: 'SM',
+    image: 'KP',
   },
   {
     id: 2,
-    name: 'David Chen',
-    role: 'Entrepreneur',
-    content: 'The personalized approach and attention to detail sets Finxpert apart. They truly understand the unique needs of each client and deliver exceptional results.',
+    name: 'Tom Cavanagh',
+    role: 'VP, Shareholder, BCC Advisers',
+    content: 'Trisch has been an invaluable resource for questions surrounding business valuations and financial modeling. With her continuous professionalism and attention to detail, she is someone I have trusted since we began working together 5+ years ago.',
     rating: 5,
-    image: 'DC',
+    image: 'TC',
   },
   {
     id: 3,
-    name: 'Emily Rodriguez',
-    role: 'CFO, GlobalTrade Inc',
-    content: 'Working with Finxpert has been a game-changer for our retirement planning. Their team provided clear, actionable strategies that gave us peace of mind.',
+    name: 'David North',
+    role: 'President, Garage Doors by Roy North',
+    content: 'Our company has engaged Anchor Business Valuations for 5+ consecutive years to complete a valuation of our company. The price was reasonable, and the turnaround time was excellent. I highly recommend hiring Trisch Garthoeffner and her associates!',
     rating: 5,
-    image: 'ER',
+    image: 'DN',
   },
   {
     id: 4,
-    name: 'Michael Thompson',
-    role: 'Real Estate Investor',
-    content: 'The level of professionalism and expertise at Finxpert is unmatched. They helped me diversify my investments and minimize risks effectively.',
+    name: 'Anonymous',
+    role: 'Divorce Client, Spring 2024',
+    content: 'I really enjoyed working with Trisch and was very impressed with her knowledge, quality of work, and customer service. I will definitely keep Anchor in mind for future needs of myself or friends.',
     rating: 5,
-    image: 'MT',
+    image: 'AN',
   },
+  {
+    id: 5,
+    name: 'Leathem Stearn',
+    role: 'Founder',
+    content: 'I have worked extensively with Ms. Garthoeffner and found her to be competent, comprehensive, punctual and insightful in her work. I have and will continue to work with her.',
+    rating: 5,
+    image: 'LS',
+  },
+  {
+    id: 6,
+    name: 'Paul Bosley',
+    role: 'President/Founder, Business Finance Depot',
+    content: 'Trisch Garthoeffner knows Valuation. Period, full stop.',
+    rating: 5,
+    image: 'PB',
+  },
+  {
+    id: 7,
+    name: 'Larry Amon',
+    role: 'President, TAB of SW Florida',
+    content: 'Trisch is a high energy, driven to succeed, personality that helps business owners determine the value of their companies.',
+    rating: 5,
+    image: 'LA',
+  },
+  {
+    id: 8,
+    name: 'C. Zachary Meyers',
+    role: 'President, C. Zachary Meyers, PLLC',
+    content: 'Thanks for completing the valuation. With a lot of considerations, I know this was a complicated and time-consuming review. You did great with what we gave you. I am glad we used your company. Will look forward to use anchor business valuations in the future.',
+    rating: 5,
+    image: 'ZM',
+  },
+  {
+    id: 9,
+    name: 'Dr. William Mills',
+    role: 'Founder, Marshall Medical Center',
+    content: 'Trisch was instrumental in the sale of our family’s medical practice all the way from valuation to closing. We could not have done it without her. Her professionalism, knowledge, and positive attitude made the process very easy for us. I highly recommend working with Trisch.',
+    rating: 5,
+    image: 'WM',
+  },
+  {
+    id: 10,
+    name: 'Business & Asset Protection Attorney',
+    role: 'Spring 2024',
+    content: 'Thanks for all of your hard work, Trisch. We could not have done without you.',
+    rating: 5,
+    image: 'BA',
+  }
 ];
 
 const TestimonialsSection = () => {
@@ -45,7 +93,7 @@ const TestimonialsSection = () => {
 
   useEffect(() => {
     if (!isAutoPlaying) return;
-    
+
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     }, 5000);
@@ -153,7 +201,7 @@ const TestimonialsSection = () => {
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
-              
+
               {/* Dots */}
               <div className="flex items-center gap-2">
                 {testimonials.map((_, index) => (
@@ -163,9 +211,8 @@ const TestimonialsSection = () => {
                       setIsAutoPlaying(false);
                       setCurrentIndex(index);
                     }}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentIndex ? 'w-8 bg-gold' : 'bg-border'
-                    }`}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentIndex ? 'w-8 bg-gold' : 'bg-border'
+                      }`}
                   />
                 ))}
               </div>

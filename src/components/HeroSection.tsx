@@ -1,121 +1,132 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, Play, Star, ChevronDown } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import heroImage from '@/assets/hero-financial.jpg';
+import { Link } from 'react-router-dom';
+
+const slides = [
+  {
+    image: '/assets/home/image8.png',
+    subtitle: 'Business Valuation Experts',
+    title: 'Certified Business Valuation Services and Merger & Acquisition Consulting',
+    description: 'Anchor Business Valuations & Financial Services, LLC is a business valuation, litigation support and merger & acquisition transaction consulting firm. Anchor assists their clients through a broad capacity of services spanning from the determination of the value of a business to consultation on the financial implications and due diligence process of the sale, acquisition or investment in a company.',
+    link: '/contact'
+  },
+  {
+    image: '/assets/home/image13.png',
+    subtitle: 'Industry Leadership',
+    title: 'Trisch Garthoeffner Nominated as Chairman of the NACVA Standards Board',
+    description: 'Trisch Garthoeffner, ABV, CVA, MAFF, EA was nominated as Chairman of the National Association of Certified Valuators & Analysts (NACVA) Standards Board, highlighting our commitment to excellence and industry standards.',
+    link: '/industry-expertise'
+  }
+];
 
 const HeroSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-20">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage}
-          alt="Financial consulting professionals"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/60" />
-      </div>
+      <AnimatePresence mode='wait'>
+        <motion.div
+          key={currentSlide}
+          className="absolute inset-0 z-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <img
+            src={slides[currentSlide].image}
+            alt="Slide background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/60" />
+        </motion.div>
+      </AnimatePresence>
 
-      {/* Content */}
       <div className="container-wide relative z-10 py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <motion.div
+              key={`content-${currentSlide}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex items-center gap-3 mb-6"
             >
-              <div className="h-px w-12 bg-gold" />
-              <span className="text-gold font-inter text-sm font-medium tracking-widest uppercase">
-                Innovative Financial
-              </span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-playfair text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-6"
-            >
-              Financial Expertise You Can{' '}
-              <span className="text-gold">Trust</span> & Secure.
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-inter text-lg text-primary-foreground/80 mb-8 max-w-lg"
-            >
-              We provide comprehensive financial planning and consulting services to help you achieve your financial goals with confidence and clarity.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-wrap gap-4"
-            >
-              <Button variant="gold" size="xl">
-                Learn More
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-              <Button variant="heroOutline" size="xl">
-                <Play className="w-5 h-5 mr-2" />
-                Watch Video
-              </Button>
-            </motion.div>
-
-            {/* Rating Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-12 flex items-center gap-4"
-            >
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
-                  <div
-                    key={i}
-                    className="w-10 h-10 rounded-full bg-gold/20 border-2 border-primary-foreground/20"
-                  />
-                ))}
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-px w-12 bg-gold" />
+                <span className="text-gold font-inter text-sm font-medium tracking-widest uppercase">
+                  {slides[currentSlide].subtitle}
+                </span>
               </div>
-              <div>
-                <div className="flex items-center gap-1 mb-1">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} className="w-4 h-4 fill-gold text-gold" />
-                  ))}
-                  <span className="text-primary-foreground font-semibold ml-2">4.5+</span>
-                </div>
-                <p className="text-primary-foreground/60 text-sm">Based on 1,200 reviews</p>
+
+              <h1 className="font-playfair text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground leading-tight mb-6">
+                {slides[currentSlide].title}
+              </h1>
+
+              <p className="font-inter text-lg text-primary-foreground/80 mb-8 max-w-2xl">
+                {slides[currentSlide].description}
+              </p>
+
+              <div className="flex flex-wrap gap-4">
+                <Link to={slides[currentSlide].link}>
+                  <Button variant="gold" size="xl">
+                    Learn More
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </div>
 
-          {/* Right Side - Slide Indicator */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="hidden lg:flex flex-col items-end justify-center"
-          >
-            <div className="text-primary-foreground/30 font-playfair text-9xl font-bold">
-              01.
+          {/* Right Side - Slide Controls */}
+          <div className="hidden lg:flex flex-col items-end justify-center space-y-6">
+            <div className="flex gap-4">
+              <button onClick={prevSlide} className="p-2 border border-white/20 rounded-full hover:bg-white/10 text-white transition-colors">
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button onClick={nextSlide} className="p-2 border border-white/20 rounded-full hover:bg-white/10 text-white transition-colors">
+                <ChevronRight className="w-6 h-6" />
+              </button>
             </div>
-          </motion.div>
+            <div className="text-primary-foreground/30 font-playfair text-9xl font-bold">
+              0{currentSlide + 1}.
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
+        {/* Dots Navigation */}
+        <div className="flex items-center gap-3 mb-4">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`rounded-full transition-all duration-300 ${index === currentSlide
+                  ? 'w-3 h-3 bg-gold scale-125'
+                  : 'w-2 h-2 bg-white/40 hover:bg-white/60'
+                }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+
         <span className="text-primary-foreground/60 text-sm font-inter tracking-wider">
           scroll to explore
         </span>

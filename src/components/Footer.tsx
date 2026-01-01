@@ -1,19 +1,17 @@
 import { ArrowUpRight, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 
 const quickLinks = [
-  { name: 'Home', href: '#home' },
+  { name: 'Home', href: '/' },
   { name: 'About Us', href: '#about' },
   { name: 'Services', href: '#services' },
-  { name: 'Pricing', href: '#pricing' },
   { name: 'Contact', href: '#contact' },
 ];
 
 const services = [
-  { name: 'Financial Planning', href: '#services' },
-  { name: 'Investment Management', href: '#services' },
-  { name: 'Tax Consulting', href: '#services' },
-  { name: 'Retirement Planning', href: '#services' },
-  { name: 'Risk Assessment', href: '#services' },
+  { name: 'Business Valuation', href: '#services' },
+  { name: 'Litigation Support', href: '#services' },
+  { name: 'Mergers & Acquisitions', href: '#services' },
+  { name: '409A Valuation', href: '#services' },
 ];
 
 const Footer = () => {
@@ -24,21 +22,27 @@ const Footer = () => {
           {/* Brand Column */}
           <div>
             <a href="#home" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-gold rounded-lg flex items-center justify-center">
-                <ArrowUpRight className="w-6 h-6 text-primary" />
-              </div>
-              <span className="font-playfair text-2xl font-bold text-primary-foreground">
-                FINXPERT
-              </span>
+              <img
+                src="/assets/logo.png"
+                alt="Anchor Business Valuations"
+                className="h-12 w-auto object-contain bg-white/10 rounded-lg p-1"
+              />
             </a>
             <p className="text-primary-foreground/60 font-inter text-sm leading-relaxed mb-6">
-              Your trusted partner for comprehensive financial planning and consulting services. We help you achieve your financial goals with confidence.
+              Anchor Business Valuations & Financial Services, LLC is a premier business valuation and consulting firm serving clients with integrity and expertise.
             </p>
             <div className="flex gap-3">
-              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, index) => (
+              {[
+                { Icon: Facebook, href: '#' },
+                { Icon: Twitter, href: '#' },
+                { Icon: Linkedin, href: '#' },
+                { Icon: Instagram, href: 'https://www.instagram.com/anchor_business_valuations/' }
+              ].map(({ Icon, href }, index) => (
                 <a
                   key={index}
-                  href="#"
+                  href={href}
+                  target={href !== '#' ? '_blank' : undefined}
+                  rel={href !== '#' ? 'noopener noreferrer' : undefined}
                   className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-gold hover:text-primary transition-all duration-300"
                 >
                   <Icon className="w-5 h-5 text-primary-foreground" />
@@ -93,28 +97,26 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                <span className="text-primary-foreground/60 font-inter text-sm">
-                  123 Financial District, Suite 456
-                  <br />
-                  New York, NY 10001
+                <span className="text-primary-foreground/60 font-inter text-sm max-w-[200px]">
+                  365 Fifth Avenue, Naples, FL 34102, United States
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-gold flex-shrink-0" />
                 <a
-                  href="tel:+15551234567"
+                  href="tel:+12399193092"
                   className="text-primary-foreground/60 font-inter text-sm hover:text-gold transition-colors"
                 >
-                  +1 (555) 123-4567
+                  239.919.3092
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-gold flex-shrink-0" />
                 <a
-                  href="mailto:info@finxpert.com"
+                  href="mailto:Info@AnchorBVFS.com"
                   className="text-primary-foreground/60 font-inter text-sm hover:text-gold transition-colors"
                 >
-                  info@finxpert.com
+                  Info@AnchorBVFS.com
                 </a>
               </li>
             </ul>
@@ -125,7 +127,7 @@ const Footer = () => {
         <div className="border-t border-primary-foreground/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-primary-foreground/40 font-inter text-sm">
-              © 2024 Finxpert. All rights reserved.
+              © {new Date().getFullYear()} Anchor Business Valuations. All rights reserved.
             </p>
             <div className="flex gap-6">
               <a

@@ -1,41 +1,42 @@
+
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle, Users, Award, Target, ArrowRight, Play } from 'lucide-react';
+import {
+  CheckCircle, ArrowRight, BookOpen
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageBanner from '@/components/PageBanner';
 import { Button } from '@/components/ui/button';
-import aboutImage from '@/assets/about-financial.jpg';
+
+const aboutImage = '/assets/owner.jpg'; // Using the owner image
 
 const About = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
-  const values = [
-    { icon: Target, title: 'Our Mission', description: 'To provide exceptional financial consulting services that empower businesses and individuals to achieve their financial goals.' },
-    { icon: Award, title: 'Our Vision', description: 'To be the most trusted and innovative financial consulting firm, recognized for delivering outstanding value to our clients.' },
-    { icon: Users, title: 'Our Values', description: 'Integrity, Excellence, Innovation, and Client-Centricity guide everything we do at Finxpert.' },
-  ];
 
-  const milestones = [
-    { year: '2008', title: 'Company Founded', description: 'Started with a vision to transform financial consulting.' },
-    { year: '2012', title: 'Expansion Phase', description: 'Opened offices in 5 major cities across the country.' },
-    { year: '2016', title: '1000+ Clients', description: 'Reached the milestone of serving over 1000 clients.' },
-    { year: '2020', title: 'Digital Transformation', description: 'Launched digital-first consulting services.' },
-    { year: '2024', title: 'Global Reach', description: 'Extended services to international markets.' },
+
+  const credentials = [
+    'Accredited Business Valuator (ABV) through AICPA',
+    'Certified Valuation Analyst (CVA) through NACVA',
+    'Master Analyst in Financial Forensics (MAFF) through NACVA',
+    'IRS Representative (Enrolled Agent/EA)',
+    'Court Certified Expert Witness',
+    'Master’s in Accounting (MAcc)',
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <PageBanner 
-        title="About Us" 
+      <PageBanner
+        title="Meet The Owner"
         breadcrumbs={[
           { label: 'Home', href: '/' },
-          { label: 'About Us' }
-        ]} 
+          { label: 'Meet The Owner' }
+        ]}
       />
 
       {/* About Content Section */}
@@ -49,33 +50,23 @@ const About = () => {
               className="relative"
             >
               <div className="relative rounded-2xl overflow-hidden shadow-elegant">
-                <img 
-                  src={aboutImage} 
-                  alt="About Finxpert" 
-                  className="w-full h-[500px] object-cover"
+                <img
+                  src={aboutImage}
+                  alt="Trisch Garthoeffner"
+                  className="w-full h-[600px] object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
               </div>
-              
-              {/* Video Play Button */}
-              <motion.div 
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                whileHover={{ scale: 1.1 }}
-              >
-                <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center cursor-pointer shadow-gold">
-                  <Play className="w-8 h-8 text-primary ml-1" />
-                </div>
-              </motion.div>
 
               {/* Experience Badge */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
                 className="absolute -bottom-6 -right-6 bg-accent text-primary px-8 py-6 rounded-xl shadow-gold"
               >
-                <div className="text-4xl font-playfair font-bold">16+</div>
+                <div className="text-4xl font-playfair font-bold">20+</div>
                 <div className="text-sm font-inter">Years Experience</div>
               </motion.div>
             </motion.div>
@@ -86,122 +77,58 @@ const About = () => {
               viewport={{ once: true }}
             >
               <span className="text-accent font-inter font-semibold text-sm tracking-wider uppercase mb-4 block">
-                About Our Company
+                Meet The Founder
               </span>
-              <h2 className="text-4xl md:text-5xl font-playfair font-bold text-primary mb-6">
-                We're a Leading Financial Consulting Firm
+              <h2 className="text-3xl md:text-4xl font-playfair font-bold text-primary mb-2">
+                Trisch Garthoeffner
               </h2>
-              <p className="text-muted-foreground font-inter leading-relaxed mb-6">
-                Founded in 2008, Finxpert has grown to become one of the most trusted names in financial consulting. 
-                We combine deep industry expertise with innovative solutions to help our clients navigate complex 
-                financial landscapes and achieve sustainable growth.
-              </p>
-              <p className="text-muted-foreground font-inter leading-relaxed mb-8">
-                Our team of seasoned professionals brings decades of combined experience across corporate finance, 
-                investment banking, wealth management, and tax consulting. We pride ourselves on delivering 
-                personalized strategies that align with each client's unique goals and circumstances.
+              <p className="text-lg text-gold font-playfair mb-6">
+                ABV, CVA, MAFF, EA, MAcc
               </p>
 
-              <div className="space-y-4 mb-8">
-                {['Expert financial advisors with 16+ years experience', 'Customized solutions for every client', '24/7 dedicated support and consultation', 'Proven track record of success'].map((item, index) => (
+              <div className="prose prose-slate mb-8 text-muted-foreground font-inter leading-relaxed">
+                <p className="mb-4">
+                  Trisch is the founder and managing member of Anchor Business Valuations & Financial Services, LLC (ABVFS). With over 20 years of experience, she provides premier business valuation and financial consulting services.
+                </p>
+                <p className="mb-4">
+                  Her background includes 10 years on Wall Street in investment banking and private equity, giving her deep insight into M&A consulting. She previously held FINRA Series 7, 62, 63, and 72 licenses.
+                </p>
+                <p>
+                  Trisch is highly active in the valuation community, serving as Chair of the NACVA Standards Board (2022) and receiving the Outstanding Membership Award (2023). She is also an avid speaker and author on valuation topics.
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-3 mb-8">
+                {credentials.map((item, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-center gap-3"
+                    className="flex items-start gap-3"
                   >
-                    <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                    <span className="font-inter text-foreground">{item}</span>
+                    <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                    <span className="font-inter text-sm text-foreground">{item}</span>
                   </motion.div>
                 ))}
               </div>
 
-              <Link to="/contact">
-                <Button variant="cta" size="lg">
-                  Get In Touch
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
+              <div className="flex flex-wrap gap-4">
+                <Link to="/contact">
+                  <Button variant="default" size="lg">
+                    Contact Trisch
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+                <Link to="/events">
+                  <Button variant="outline" size="lg">
+                    Speaking Events
+                    <BookOpen className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mission, Vision, Values */}
-      <section className="section-padding bg-muted">
-        <div className="container-wide">
-          <div className="text-center mb-16">
-            <span className="text-accent font-inter font-semibold text-sm tracking-wider uppercase mb-4 block">
-              What Drives Us
-            </span>
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold text-primary">
-              Our Core Principles
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-background p-8 rounded-xl shadow-card hover:shadow-elegant transition-all duration-300"
-              >
-                <div className="w-16 h-16 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
-                  <value.icon className="w-8 h-8 text-accent" />
-                </div>
-                <h3 className="text-2xl font-playfair font-bold text-primary mb-4">{value.title}</h3>
-                <p className="text-muted-foreground font-inter leading-relaxed">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section className="section-padding bg-background">
-        <div className="container-wide">
-          <div className="text-center mb-16">
-            <span className="text-accent font-inter font-semibold text-sm tracking-wider uppercase mb-4 block">
-              Our Journey
-            </span>
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold text-primary">
-              Company Milestones
-            </h2>
-          </div>
-
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-accent/30 hidden md:block" />
-
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`flex items-center gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                >
-                  <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                    <div className="bg-muted p-6 rounded-xl inline-block">
-                      <span className="text-accent font-playfair font-bold text-2xl">{milestone.year}</span>
-                      <h3 className="text-xl font-playfair font-bold text-primary mt-2">{milestone.title}</h3>
-                      <p className="text-muted-foreground font-inter mt-2">{milestone.description}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="w-4 h-4 bg-accent rounded-full flex-shrink-0 hidden md:block relative z-10" />
-                  
-                  <div className="flex-1 hidden md:block" />
-                </motion.div>
-              ))}
-            </div>
           </div>
         </div>
       </section>

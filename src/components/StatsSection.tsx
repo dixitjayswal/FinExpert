@@ -4,28 +4,28 @@ import { Users, Award, Globe, TrendingUp } from 'lucide-react';
 
 const stats = [
   {
-    icon: Users,
-    number: 2500,
-    suffix: '+',
-    label: 'Happy Clients',
-  },
-  {
     icon: Award,
-    number: 15,
+    number: 20,
     suffix: '+',
-    label: 'Awards Won',
+    label: 'Years Experience',
   },
   {
-    icon: Globe,
+    icon: Users,
     number: 50,
-    suffix: '+',
-    label: 'Countries Served',
+    suffix: '%',
+    label: 'Healthcare Clients',
   },
   {
     icon: TrendingUp,
-    number: 98,
-    suffix: '%',
-    label: 'Success Rate',
+    number: 100,
+    suffix: 'M+',
+    label: 'Business Value Assessed',
+  },
+  {
+    icon: Globe,
+    number: 40,
+    suffix: '+',
+    label: 'Industries Served',
   },
 ];
 

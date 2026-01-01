@@ -14,19 +14,19 @@ const contactInfo = [
     icon: MapPin,
     number: '01',
     title: 'Our Address',
-    details: ['123 Financial District', 'New York, NY 10004', 'United States'],
+    details: ['365 Fifth Avenue', 'Naples, FL 34102, United States'],
   },
   {
     icon: Phone,
     number: '02',
-    title: '24/7 Support',
-    details: ['+1 (555) 123-4567', '+1 (555) 987-6543', 'support@finance.com'],
+    title: 'Contact',
+    details: ['(239) 919-3092', 'Info@AnchorBVFS.com'],
   },
   {
     icon: Clock,
     number: '03',
     title: 'Opening Hours',
-    details: ['Monday - Friday: 9AM - 6PM', 'Saturday: 10AM - 4PM', 'Sunday: Closed'],
+    details: ['Monday - Friday: 8AM - 5PM', 'Weekend: Closed'],
   },
 ];
 
@@ -38,19 +38,30 @@ const Contact = () => {
     phone: '',
     subject: '',
     message: '',
+    consent: false,
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.consent) {
+      toast({
+        title: 'Please check the consent box',
+        description: 'You must agree to the terms to proceed.',
+        variant: 'destructive',
+      });
+      return;
+    }
     toast({
       title: 'Message Sent!',
       description: 'We will get back to you within 24 hours.',
     });
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    setFormData({ name: '', email: '', phone: '', subject: '', message: '', consent: false });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+    setFormData(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
   };
 
   return (
@@ -168,6 +179,22 @@ const Contact = () => {
                   rows={6}
                   className="bg-white border-slate/20 focus:border-gold focus:ring-gold/20 resize-none"
                 />
+
+                <div className="flex items-start space-x-2">
+                  <input
+                    type="checkbox"
+                    name="consent"
+                    id="consent"
+                    checked={formData.consent}
+                    onChange={handleChange}
+                    className="mt-1"
+                    required
+                  />
+                  <label htmlFor="consent" className="text-sm text-muted-foreground leading-tight">
+                    I agree to receive informational and promotional email communication from Anchor Business Valuations & Financial Services, LLC.
+                  </label>
+                </div>
+
                 <Button type="submit" className="btn-cta">
                   <Send className="w-4 h-4 mr-2" />
                   Send Message
@@ -184,7 +211,7 @@ const Contact = () => {
               className="h-[500px] lg:h-auto min-h-[400px] rounded-2xl overflow-hidden shadow-card"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1640000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.526279930722!2d-81.79510968496924!3d26.13884498346696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88db000f6f6f6f6f%3A0x6f6f6f6f6f6f6f6f!2s365%205th%20Ave%20S%2C%20Naples%2C%20FL%2034102%2C%20USA!5e0!3m2!1sen!2sus!4v1640000000000!5m2!1sen!2sus"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

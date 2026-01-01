@@ -14,85 +14,167 @@ const servicesData: Record<string, {
   benefits: string[];
   image: string;
 }> = {
-  'corporate-finance': {
-    title: 'Corporate Finance',
-    description: 'Strategic financial planning and management solutions for businesses.',
-    longDescription: 'Our corporate finance services help businesses optimize their financial structure, manage capital effectively, and achieve sustainable growth. We provide comprehensive solutions tailored to your specific business needs and industry requirements.',
+  '409a-valuation': {
+    title: 'IRC Section 409A Valuation',
+    description: 'Compliance valuations for stock options and equity-based compensation.',
+    longDescription: 'We provide defensible outcomes for IRC 409A valuations. Our reports are designed to withstand scrutiny from auditors and the IRS, ensuring your stock option plans are compliant and your employees are protected.',
     features: [
-      'Financial Planning & Analysis',
-      'Capital Structure Optimization',
-      'Mergers & Acquisitions Advisory',
-      'Debt & Equity Financing',
-      'Risk Management Solutions',
-      'Cash Flow Optimization',
+      'Common Stock Valuation',
+      'Defensible Reporting',
+      'Audit Support',
+      'Regular Updates',
     ],
     benefits: [
-      'Improved financial performance and profitability',
-      'Access to expert financial guidance',
-      'Strategic growth planning and execution',
-      'Enhanced decision-making capabilities',
+      'IRS Compliance',
+      'Audit Readiness',
+      'Employee Confidence',
+      'Fast Turnaround',
     ],
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800',
+    image: '/assets/services/valuation.jpg',
   },
-  'investment-banking': {
-    title: 'Investment Banking',
-    description: 'Expert advisory services for complex financial transactions.',
-    longDescription: 'Our investment banking team provides world-class advisory services for mergers, acquisitions, and capital raising. We leverage our deep industry expertise and global network to deliver exceptional results for our clients.',
+  'business-valuation': {
+    title: 'Business Valuation',
+    description: 'Valuations for tax, transaction, litigation, and financial reporting purposes.',
+    longDescription: 'Anchor Business Valuations provides independent and objective business valuation services for a variety of purposes. Whether you are buying or selling a business, planning your estate, or involved in a dispute, we deliver credible valuation reports.',
     features: [
-      'M&A Advisory',
-      'Capital Raising',
-      'IPO Preparation',
-      'Private Placements',
-      'Strategic Advisory',
-      'Valuation Services',
+      'Estate & Gift Tax',
+      'Mergers & Acquisitions',
+      'Buy-Sell Agreements',
+      'Financial Reporting',
     ],
     benefits: [
-      'Access to global capital markets',
-      'Expert deal structuring and negotiation',
-      'Comprehensive due diligence support',
-      'Post-transaction integration assistance',
+      'Objective Analysis',
+      'Certified Experts',
+      'Comprehensive Reports',
+      'Strategic Insight',
     ],
-    image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800',
+    image: '/assets/services/business.jpg',
   },
-  'wealth-management': {
-    title: 'Wealth Management',
-    description: 'Personalized wealth preservation and growth strategies.',
-    longDescription: 'Our wealth management services are designed to help high-net-worth individuals and families preserve and grow their wealth across generations. We take a holistic approach to financial planning, considering all aspects of your financial life.',
+  'healthcare-valuations': {
+    title: 'Healthcare Valuations',
+    description: 'Specialized valuation services for medical practices and healthcare facilities.',
+    longDescription: 'Our team specializes in the unique challenges of healthcare valuations. We understand the regulatory environment, reimbursement models, and operational complexities that drive value in the healthcare sector.',
     features: [
-      'Investment Portfolio Management',
-      'Estate Planning',
-      'Tax Optimization',
-      'Retirement Planning',
-      'Risk Assessment',
-      'Legacy Planning',
+      'Medical Practice Valuation',
+      'ASC & Hospital Valuation',
+      'Stark Law Compliance',
+      'Physician Compensation',
     ],
     benefits: [
-      'Personalized investment strategies',
-      'Tax-efficient wealth transfer',
-      'Comprehensive financial planning',
-      'Peace of mind for your family\'s future',
+      'Industry Expertise',
+      'Regulatory Compliance',
+      'Fair Market Value Opinions',
+      'Transaction Support',
     ],
-    image: 'https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?w=800',
+    image: '/assets/services/healthcare.jpg',
   },
-  'tax-consulting': {
-    title: 'Tax Consulting',
-    description: 'Strategic tax planning and compliance services.',
-    longDescription: 'Our tax consulting services help businesses and individuals navigate complex tax regulations while minimizing their tax burden legally. We stay current with tax law changes to provide proactive advice.',
+  'mergers-acquisitions': {
+    title: 'Mergers & Acquisitions',
+    description: 'Consulting for buy-side and sell-side transactions to maximize value.',
+    longDescription: 'We assist business owners and investors through the complex M&A process. From deal structuring and due diligence to valuation and negotiation support, we help you achieve your transaction goals.',
     features: [
-      'Tax Planning & Strategy',
-      'Compliance & Reporting',
-      'International Tax Services',
-      'Transfer Pricing',
-      'Tax Dispute Resolution',
-      'R&D Tax Credits',
+      'Deal Structuring',
+      'Due Diligence',
+      'Valuation Analysis',
+      'Negotiation Support',
     ],
     benefits: [
-      'Reduced tax liability',
-      'Full regulatory compliance',
-      'Strategic tax planning',
-      'Expert representation in audits',
+      'Maximized Value',
+      'Reduced Risk',
+      'Smooth Transaction Process',
+      'Expert Guidance',
     ],
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800',
+    image: '/assets/services/mergers.jpg',
+  },
+  'litigation-support': {
+    title: 'Litigation Support',
+    description: 'Expert witness testimony, marital dissolution, economic damages, and lost profits analysis.',
+    longDescription: 'We provide robust litigation support services, including expert testimony and consulting. Our experts differ complex financial concepts into clear, compelling arguments for triers of fact.',
+    features: [
+      'Expert Testimony',
+      'Marital Dissolution',
+      'Economic Damages',
+      'Lost Profits Analysis',
+    ],
+    benefits: [
+      'Credible Testimony',
+      'Clear Communication',
+      'Defensible Opinions',
+      'Case Strategy Support',
+    ],
+    image: '/assets/services/litigation.jpg',
+  },
+  'estate-gift-tax': {
+    title: 'Estate & Gift Tax',
+    description: 'Valuations for estate planning, gifting, and tax reporting requirements.',
+    longDescription: 'We work closely with estate planning attorneys and tax professionals to provide valuations for estate and gift tax purposes. Our reports are prepared in accordance with IRS guidelines to minimize audit risk.',
+    features: [
+      'Estate Tax Valuation',
+      'Gift Tax Valuation',
+      'Discount Studies',
+      'IRS Audit Support',
+    ],
+    benefits: [
+      'Tax Compliance',
+      'Audit Protection',
+      'Wealth Preservation',
+      'Peace of Mind',
+    ],
+    image: '/assets/services/estate.jpg',
+  },
+  'shareholder-disputes': {
+    title: 'Shareholder Disputes',
+    description: 'Resolution support for business divorce and shareholder disagreement cases.',
+    longDescription: 'Shareholder disputes can be contentious and complex. We provide objective valuation and financial analysis to help resolve disputes regarding buyouts, dissenters\' rights, and oppression claims.',
+    features: [
+      'Business Divorce',
+      'Dissenting Shareholder Actions',
+      'Buyout Valuation',
+      'Mediation Support',
+    ],
+    benefits: [
+      'Objective Assesment',
+      'Dispute Resolution',
+      'Fair Outcomes',
+      'Litigation Readiness',
+    ],
+    image: '/assets/services/dispute.jpg',
+  },
+  'quality-of-earnings': {
+    title: 'Quality of Earnings',
+    description: 'Detailed analysis of earnings quality for potential buyers or lenders.',
+    longDescription: 'A Quality of Earnings (QofE) report provides a deeper dive into a company\'s financial performance than a standard audit. We analyze the sustainability and accuracy of earnings to support investment decisions.',
+    features: [
+      'EBITDA Adjustments',
+      'Revenue Recognition Analysis',
+      'Working Capital Analysis',
+      'Customer Concentration',
+    ],
+    benefits: [
+      'Informed Decision Making',
+      'Risk Identification',
+      'Purchase Price Justification',
+      'Deal Confidence',
+    ],
+    image: '/assets/services/earnings.jpg',
+  },
+  'lending-valuations': {
+    title: 'Lending Valuations',
+    description: 'Valuations for underwriting and SBA lending purposes.',
+    longDescription: 'We provide independent valuations for lenders to support loan underwriting. Our reports meet SOP requirements for SBA 7(a) loans and other commercial lending standards.',
+    features: [
+      'SBA 7(a) Valuations',
+      'Collateral Valuation',
+      'Underwriting Support',
+      'Fast Turnaround',
+    ],
+    benefits: [
+      'SOP Compliance',
+      'Lender Confidence',
+      'Quick Closing',
+      'Risk Mitigation',
+    ],
+    image: '/assets/services/lending.jpg',
   },
 };
 
@@ -120,7 +202,7 @@ const ServiceDetail = () => {
         <div className="container mx-auto px-4 py-20 text-center">
           <p className="text-slate mb-8">The service you're looking for doesn't exist.</p>
           <Link to="/">
-            <Button variant="gold">Return Home</Button>
+            <Button variant="default">Return Home</Button>
           </Link>
         </div>
         <Footer />
@@ -154,11 +236,10 @@ const ServiceDetail = () => {
                     <li key={s.slug}>
                       <Link
                         to={`/services/${s.slug}`}
-                        className={`flex items-center justify-between p-4 rounded-xl transition-all duration-300 ${
-                          s.slug === slug
+                        className={`flex items-center justify-between p-4 rounded-xl transition-all duration-300 ${s.slug === slug
                             ? 'bg-gold text-navy font-semibold'
                             : 'bg-white hover:bg-gold/10 text-slate hover:text-navy'
-                        }`}
+                          }`}
                       >
                         <span>{s.title}</span>
                         <ArrowRight className="w-4 h-4" />
@@ -176,18 +257,18 @@ const ServiceDetail = () => {
                 </p>
                 <div className="space-y-4">
                   <a
-                    href="tel:+15551234567"
+                    href="tel:+12399193092"
                     className="flex items-center gap-3 text-gold hover:text-gold/80 transition-colors"
                   >
                     <Phone className="w-5 h-5" />
-                    <span>+1 (555) 123-4567</span>
+                    <span>239.919.3092</span>
                   </a>
                   <a
-                    href="mailto:info@finance.com"
+                    href="mailto:Info@AnchorBVFS.com"
                     className="flex items-center gap-3 text-gold hover:text-gold/80 transition-colors"
                   >
                     <Mail className="w-5 h-5" />
-                    <span>info@finance.com</span>
+                    <span>Info@AnchorBVFS.com</span>
                   </a>
                 </div>
               </div>

@@ -1,14 +1,15 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Check, ArrowRight, Play } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import aboutImage from '@/assets/about-financial.jpg';
+
+const aboutImage = '/assets/owner.jpg';
 
 const features = [
-  'Expert Financial Planning',
-  'Investment Management',
-  'Risk Assessment & Mitigation',
-  'Retirement Planning Solutions',
+  'Business Valuation',
+  'Litigation Support',
+  'Merger & Acquisition',
+  'Financial Consulting',
 ];
 
 const AboutSection = () => {
@@ -16,7 +17,7 @@ const AboutSection = () => {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="about" className="section-padding bg-background overflow-hidden">
+    <section id="about" className="py-20 bg-background overflow-hidden">
       <div className="container-wide">
         <div ref={ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image Side */}
@@ -29,15 +30,9 @@ const AboutSection = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-elegant-lg">
               <img
                 src={aboutImage}
-                alt="Financial consulting team"
-                className="w-full h-[500px] object-cover"
+                alt="Trisch Garthoeffner"
+                className="w-full h-[600px] object-cover object-top"
               />
-              {/* Overlay Play Button */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <button className="w-20 h-20 bg-gold rounded-full flex items-center justify-center shadow-gold hover:scale-110 transition-transform duration-300">
-                  <Play className="w-8 h-8 text-primary ml-1" fill="currentColor" />
-                </button>
-              </div>
             </div>
 
             {/* Experience Badge */}
@@ -48,7 +43,7 @@ const AboutSection = () => {
               className="absolute -bottom-8 -right-8 bg-primary rounded-2xl p-6 shadow-elegant-lg"
             >
               <div className="text-center">
-                <span className="font-playfair text-5xl font-bold text-gold">25+</span>
+                <span className="font-playfair text-5xl font-bold text-gold">20+</span>
                 <p className="text-primary-foreground font-inter text-sm mt-1">
                   Years Experience
                 </p>
@@ -66,18 +61,18 @@ const AboutSection = () => {
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-12 bg-gold" />
               <span className="text-gold font-inter text-sm font-medium tracking-widest uppercase">
-                About Us
+                About Founder
               </span>
             </div>
 
-            <h2 className="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6 leading-tight">
-              We Are The Leader In
+            <h2 className="font-playfair text-3xl md:text-3xl lg:text-4xl font-bold text-primary mb-6 leading-tight">
+              Trisch Garthoeffner, ABV, CVA, MAFF, EA
               <br />
-              <span className="text-gold">Financial</span> Consulting
+              <span className="text-gold text-2xl md:text-2xl lg:text-3xl block mt-2">Chairman of the NACVA Standards Board</span>
             </h2>
 
             <p className="text-slate font-inter leading-relaxed mb-8">
-              With over 25 years of experience, we've helped thousands of clients achieve their financial goals. Our team of certified experts provides personalized strategies tailored to your unique situation and objectives.
+              Anchor Business Valuations & Financial Services, LLC is a business valuation, litigation support and merger & acquisition transaction consulting firm. Anchor assists their clients through a broad capacity of services spanning from the determination of the value of a business to consultation on the financial implications and due diligence process of the sale, acquisition or investment in a company.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-4 mb-8">
@@ -109,5 +104,6 @@ const AboutSection = () => {
     </section>
   );
 };
+
 
 export default AboutSection;

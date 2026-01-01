@@ -12,49 +12,50 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { 
-    name: 'Home', 
+  {
+    name: 'Home',
     href: '/',
     hasDropdown: false,
   },
-  { 
-    name: 'Pages', 
-    href: '/about',
+  {
+    name: 'About Us',
+    href: '/#about',
     hasDropdown: true,
     dropdownItems: [
-      { name: 'About Us', href: '/about' },
-      { name: 'Our Team', href: '/team' },
-      { name: 'Testimonials', href: '/testimonials' },
+      { name: 'Meet The Owner', href: '/about' },
+      { name: 'Team Member', href: '/team' },
+      { name: 'Staff', href: '/staff' },
+    ]
+  },
+  {
+    name: 'Services',
+    href: '/#services',
+    hasDropdown: true,
+    dropdownItems: [
+      { name: 'IRC Section 409A Valuation', href: '/services/409a-valuation' },
+      { name: 'Business Valuation', href: '/services/business-valuation' },
+      { name: 'Healthcare Valuations', href: '/services/healthcare-valuations' },
+      { name: 'Mergers & Acquisitions', href: '/services/mergers-acquisitions' },
+      { name: 'Litigation Support', href: '/services/litigation-support' },
+      { name: 'Estate & Gift Tax', href: '/services/estate-gift-tax' },
+      { name: 'Shareholder Disputes', href: '/services/shareholder-disputes' },
+      { name: 'Quality of Earnings', href: '/services/quality-of-earnings' },
+      { name: 'Lending Valuations', href: '/services/lending-valuations' },
+    ]
+  },
+  {
+    name: 'Industry Expertise',
+    href: '/industry-expertise',
+    hasDropdown: false,
+  },
+  {
+    name: 'Resources',
+    href: '#',
+    hasDropdown: true,
+    dropdownItems: [
+      { name: 'Events', href: '/events' },
+      { name: 'Articles & Podcasts', href: '/articles' },
       { name: 'FAQ', href: '/faq' },
-    ]
-  },
-  { 
-    name: 'Services', 
-    href: '/services/corporate-finance',
-    hasDropdown: true,
-    dropdownItems: [
-      { name: 'Corporate Finance', href: '/services/corporate-finance' },
-      { name: 'Investment Banking', href: '/services/investment-banking' },
-      { name: 'Wealth Management', href: '/services/wealth-management' },
-      { name: 'Tax Consulting', href: '/services/tax-consulting' },
-    ]
-  },
-  { 
-    name: 'Portfolio', 
-    href: '/portfolio',
-    hasDropdown: true,
-    dropdownItems: [
-      { name: 'Portfolio Grid', href: '/portfolio' },
-      { name: 'Portfolio Single', href: '/portfolio/1' },
-    ]
-  },
-  { 
-    name: 'Blog', 
-    href: '/blog',
-    hasDropdown: true,
-    dropdownItems: [
-      { name: 'Blog Standard', href: '/blog' },
-      { name: 'Blog Single', href: '/blog/1' },
     ]
   },
   { name: 'Contact', href: '/contact' },
@@ -85,15 +86,15 @@ const Header = () => {
   const renderNavLink = (href: string, children: React.ReactNode, className: string, onClick?: () => void) => {
     const isExternal = href.startsWith('http');
     const isHashLink = href.includes('#');
-    
+
     if (isExternal) {
       return <a href={href} className={className} onClick={onClick}>{children}</a>;
     }
-    
+
     if (isHashLink && !href.startsWith('/')) {
       return <a href={href} className={className} onClick={onClick}>{children}</a>;
     }
-    
+
     return (
       <Link to={href} className={className} onClick={onClick}>
         {children}
@@ -103,11 +104,10 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || !isHomePage
-          ? 'bg-background/95 backdrop-blur-md shadow-elegant py-3'
-          : 'bg-transparent py-5'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || !isHomePage
+        ? 'bg-background/95 backdrop-blur-md shadow-elegant py-3'
+        : 'bg-transparent py-5'
+        }`}
     >
       <div className="container-wide flex items-center justify-between">
         {/* Logo */}
@@ -116,12 +116,11 @@ const Header = () => {
           animate={{ opacity: 1, x: 0 }}
         >
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-gold rounded-lg flex items-center justify-center">
-              <ArrowUpRight className="w-6 h-6 text-primary" />
-            </div>
-            <span className={`font-playfair text-2xl font-bold ${isScrolled || !isHomePage ? 'text-primary' : 'text-primary-foreground'}`}>
-              FINXPERT
-            </span>
+            <img
+              src="/assets/logo.png"
+              alt="FinExpert Logo"
+              className="h-10 w-auto object-contain"
+            />
           </Link>
         </motion.div>
 
@@ -145,14 +144,13 @@ const Header = () => {
                     <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
                   )}
                 </>,
-                `flex items-center gap-1 px-4 py-2 font-inter text-sm font-medium transition-colors ${
-                  isScrolled || !isHomePage
-                    ? 'text-foreground hover:text-accent' 
-                    : 'text-primary-foreground/90 hover:text-primary-foreground'
+                `flex items-center gap-1 px-4 py-2 font-inter text-sm font-medium transition-colors ${isScrolled || !isHomePage
+                  ? 'text-foreground hover:text-accent'
+                  : 'text-primary-foreground/90 hover:text-primary-foreground'
                 }`,
                 () => handleNavClick()
               )}
-              
+
               {/* Dropdown Menu */}
               <AnimatePresence>
                 {item.hasDropdown && activeDropdown === item.name && (
