@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+anchorbvfs
+temp_extract
+temp_extract_all    
