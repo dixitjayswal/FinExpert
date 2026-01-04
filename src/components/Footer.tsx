@@ -2,16 +2,16 @@ import { ArrowUpRight, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagr
 
 const quickLinks = [
   { name: 'Home', href: '/' },
-  { name: 'About Us', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'About Us', href: '/about' },
+  { name: 'Services', href: '/#services' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 const services = [
-  { name: 'Business Valuation', href: '#services' },
-  { name: 'Litigation Support', href: '#services' },
-  { name: 'Mergers & Acquisitions', href: '#services' },
-  { name: '409A Valuation', href: '#services' },
+  { name: 'Business Valuation', href: '/services/business-valuation' },
+  { name: 'Litigation Support', href: '/services/litigation-support' },
+  { name: 'Mergers & Acquisitions', href: '/services/mergers-acquisitions' },
+  { name: '409A Valuation', href: '/services/409a-valuation' },
 ];
 
 const Footer = () => {
@@ -21,7 +21,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}
           <div>
-            <a href="#home" className="flex items-center gap-2 mb-6">
+            <a href="/" className="flex items-center gap-2 mb-6">
               <img
                 src="/assets/logo.png"
                 alt="Anchor Business Valuations"
@@ -33,16 +33,14 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               {[
-                { Icon: Facebook, href: '#' },
-                { Icon: Twitter, href: '#' },
-                { Icon: Linkedin, href: '#' },
+                { Icon: Linkedin, href: 'https://www.linkedin.com/company/anchor-business-valuations-financial-services-llc/about/' },
                 { Icon: Instagram, href: 'https://www.instagram.com/anchor_business_valuations/' }
               ].map(({ Icon, href }, index) => (
                 <a
                   key={index}
                   href={href}
-                  target={href !== '#' ? '_blank' : undefined}
-                  rel={href !== '#' ? 'noopener noreferrer' : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-gold hover:text-primary transition-all duration-300"
                 >
                   <Icon className="w-5 h-5 text-primary-foreground" />

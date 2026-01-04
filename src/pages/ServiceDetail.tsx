@@ -237,8 +237,8 @@ const ServiceDetail = () => {
                       <Link
                         to={`/services/${s.slug}`}
                         className={`flex items-center justify-between p-4 rounded-xl transition-all duration-300 ${s.slug === slug
-                            ? 'bg-gold text-navy font-semibold'
-                            : 'bg-white hover:bg-gold/10 text-slate hover:text-navy'
+                          ? 'bg-gold text-navy font-semibold'
+                          : 'bg-white hover:bg-gold/10 text-slate hover:text-navy'
                           }`}
                       >
                         <span>{s.title}</span>
@@ -340,7 +340,7 @@ const ServiceDetail = () => {
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
-                  <a href="tel:+15551234567">
+                  <a href="tel:+12399193092">
                     <Button variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white">
                       <Phone className="w-4 h-4 mr-2" />
                       Call Us Now

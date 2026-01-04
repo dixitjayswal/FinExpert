@@ -58,13 +58,12 @@ const Testimonials = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <PageBanner 
-        title="Client Testimonials" 
+      <PageBanner
+        title="Client Testimonials"
         breadcrumbs={[
           { label: 'Home', href: '/' },
-          { label: 'Pages', href: '/about' },
           { label: 'Testimonials' }
-        ]} 
+        ]}
       />
 
       {/* Testimonials Grid */}
@@ -78,7 +77,7 @@ const Testimonials = () => {
               What Our Clients Say
             </h2>
             <p className="text-muted-foreground font-inter max-w-2xl mx-auto">
-              Don't just take our word for it. Here's what our valued clients have to say about 
+              Don't just take our word for it. Here's what our valued clients have to say about
               their experience working with Finxpert.
             </p>
           </div>
@@ -94,7 +93,7 @@ const Testimonials = () => {
                 className="bg-muted p-8 rounded-xl relative"
               >
                 <Quote className="w-12 h-12 text-accent/20 absolute top-6 right-6" />
-                
+
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 text-accent fill-accent" />
@@ -106,8 +105,8 @@ const Testimonials = () => {
                 </p>
 
                 <div className="flex items-center gap-4">
-                  <img 
-                    src={testimonial.image} 
+                  <img
+                    src={testimonial.image}
                     alt={testimonial.name}
                     className="w-14 h-14 rounded-full object-cover"
                   />

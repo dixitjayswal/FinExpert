@@ -61,7 +61,7 @@ const blogPosts = [
 
 const BlogPost = () => {
   const { id } = useParams();
-  
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [id]);
@@ -73,111 +73,48 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <PageBanner 
+      <PageBanner
         title={post.title}
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Blog', href: '/blog' },
           { label: post.title }
-        ]} 
+        ]}
       />
 
       <section className="section-padding bg-background">
         <div className="container-wide">
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Main Content */}
-            <div className="lg:col-span-2">
-              <motion.article
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
-                <img 
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-96 object-cover rounded-xl mb-8"
-                />
+          <div className="max-w-3xl mx-auto">
+            <motion.article
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-96 object-cover rounded-xl mb-8"
+              />
 
-                <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground font-inter mb-8">
-                  <span className="flex items-center gap-2">
-                    <img src={post.authorImage} alt={post.author} className="w-10 h-10 rounded-full object-cover" />
-                    {post.author}
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    {post.date}
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <Tag className="w-4 h-4" />
-                    {post.category}
-                  </span>
-                </div>
-
-                <div 
-                  className="prose prose-lg max-w-none font-inter text-foreground"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                />
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t border-border">
-                  {post.tags.map((tag) => (
-                    <span key={tag} className="bg-muted px-4 py-2 rounded-full text-sm font-inter text-foreground">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Share */}
-                <div className="flex items-center gap-4 mt-8">
-                  <span className="font-inter font-medium text-foreground">Share:</span>
-                  <div className="flex gap-3">
-                    <a href="#" className="w-10 h-10 bg-muted rounded-full flex items-center justify-center hover:bg-accent hover:text-primary transition-colors">
-                      <Facebook className="w-5 h-5" />
-                    </a>
-                    <a href="#" className="w-10 h-10 bg-muted rounded-full flex items-center justify-center hover:bg-accent hover:text-primary transition-colors">
-                      <Twitter className="w-5 h-5" />
-                    </a>
-                    <a href="#" className="w-10 h-10 bg-muted rounded-full flex items-center justify-center hover:bg-accent hover:text-primary transition-colors">
-                      <Linkedin className="w-5 h-5" />
-                    </a>
-                  </div>
-                </div>
-              </motion.article>
-            </div>
-
-            {/* Sidebar */}
-            <div>
-              <div className="sticky top-32 space-y-8">
-                {/* Author Box */}
-                <div className="bg-muted p-6 rounded-xl">
-                  <h3 className="text-lg font-playfair font-bold text-primary mb-4">About Author</h3>
-                  <div className="flex items-center gap-4">
-                    <img src={post.authorImage} alt={post.author} className="w-16 h-16 rounded-full object-cover" />
-                    <div>
-                      <h4 className="font-playfair font-bold text-primary">{post.author}</h4>
-                      <p className="text-muted-foreground text-sm font-inter">Senior Consultant</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Related Posts */}
-                <div className="bg-muted p-6 rounded-xl">
-                  <h3 className="text-lg font-playfair font-bold text-primary mb-4">Related Posts</h3>
-                  <div className="space-y-4">
-                    {relatedPosts.map((relatedPost) => (
-                      <Link key={relatedPost.id} to={`/blog/${relatedPost.id}`} className="flex gap-4 group">
-                        <img src={relatedPost.image} alt={relatedPost.title} className="w-20 h-16 object-cover rounded" />
-                        <div>
-                          <h4 className="font-inter font-medium text-foreground text-sm group-hover:text-accent transition-colors line-clamp-2">
-                            {relatedPost.title}
-                          </h4>
-                          <span className="text-muted-foreground text-xs">{relatedPost.date}</span>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
+              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground font-inter mb-8">
+                <span className="flex items-center gap-2">
+                  <img src={post.authorImage} alt={post.author} className="w-10 h-10 rounded-full object-cover" />
+                  {post.author}
+                </span>
+                <span className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  {post.date}
+                </span>
+                <span className="flex items-center gap-2">
+                  <Tag className="w-4 h-4" />
+                  {post.category}
+                </span>
               </div>
-            </div>
+
+              <div
+                className="prose prose-lg max-w-none font-inter text-foreground"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
+            </motion.article>
           </div>
         </div>
       </section>

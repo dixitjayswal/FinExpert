@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 
 const AboutAnchorSection = () => {
     return (
-        <section className="section-padding bg-background">
+        <section id="about" className="section-padding bg-background">
             <div className="container-wide">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     {/* Left Column: Content */}

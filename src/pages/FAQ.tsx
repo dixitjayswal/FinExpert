@@ -47,7 +47,6 @@ const FAQ = () => {
         title="Frequently Asked Questions"
         breadcrumbs={[
           { label: 'Home', href: '/' },
-          { label: 'Pages', href: '/about' },
           { label: 'FAQ' }
         ]}
       />

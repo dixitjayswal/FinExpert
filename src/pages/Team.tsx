@@ -32,7 +32,6 @@ const Team = () => {
         title="Our Team"
         breadcrumbs={[
           { label: 'Home', href: '/' },
-          { label: 'Pages', href: '/about' },
           { label: 'Our Team' }
         ]}
       />
@@ -72,18 +71,7 @@ const Team = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  {/* Social Icons */}
-                  <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <a href="#" className="w-10 h-10 bg-accent rounded-full flex items-center justify-center hover:bg-accent/80 transition-colors">
-                      <Linkedin className="w-5 h-5 text-primary" />
-                    </a>
-                    <a href="#" className="w-10 h-10 bg-accent rounded-full flex items-center justify-center hover:bg-accent/80 transition-colors">
-                      <Twitter className="w-5 h-5 text-primary" />
-                    </a>
-                    <a href="#" className="w-10 h-10 bg-accent rounded-full flex items-center justify-center hover:bg-accent/80 transition-colors">
-                      <Mail className="w-5 h-5 text-primary" />
-                    </a>
-                  </div>
+
                 </div>
 
                 <div className="text-center">
