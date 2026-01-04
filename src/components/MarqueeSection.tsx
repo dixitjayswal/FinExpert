@@ -1,37 +1,34 @@
 import { motion } from 'framer-motion';
 
 const MarqueeSection = () => {
-    const content = [
-        "Business Valuation",
-        "Litigation Support",
-        "Mergers & Acquisitions",
-        "Forensic Accounting",
-        "Expert Testimony",
-        "Gift & Estate Tax",
-        "Shareholder Disputes",
-        "Matrimonial Dissolution",
-        "Succession Planning",
-        "Transaction Advisory"
+    const images = [
+        "/assets/MarqueeSection/mq1.png",
+        "/assets/MarqueeSection/mq2.png",
+        "/assets/MarqueeSection/mq3.png",
+        "/assets/MarqueeSection/mq4.png",
     ];
 
     return (
-        <div className="bg-primary text-primary-foreground py-6 overflow-hidden border-y border-white/10 z-20 relative">
+        <div className="bg-white py-10 overflow-hidden border-y border-gray-100 z-20 relative">
             <div className="flex overflow-hidden group">
                 <motion.div
-                    className="flex gap-16 whitespace-nowrap group-hover:[animation-play-state:paused]"
+                    className="flex gap-36 whitespace-nowrap items-center"
                     animate={{ x: [0, -1000] }}
                     transition={{
                         repeat: Infinity,
-                        duration: 30,
+                        duration: 20,
                         ease: "linear",
                     }}
                 >
-                    {/* Triplicate the content to ensure smooth seamless scrolling before reset */}
-                    {[...content, ...content, ...content].map((item, index) => (
-                        <span key={index} className="text-xl font-playfair font-medium tracking-wide flex items-center gap-16">
-                            {item}
-                            <span className="w-2 h-2 rounded-full bg-gold" />
-                        </span>
+                    {/* Duplicate the content multiple times to ensure smooth scrolling */}
+                    {[...images, ...images, ...images, ...images].map((src, index) => (
+                        <div key={index} className="flex-shrink-0">
+                            <img
+                                src={src}
+                                alt={`Partner ${index}`}
+                                className="h-24 w-auto object-contain"
+                            />
+                        </div>
                     ))}
                 </motion.div>
             </div>

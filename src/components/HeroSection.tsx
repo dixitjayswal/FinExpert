@@ -9,14 +9,12 @@ const slides = [
     image: '/assets/home/hero-1.png',
     subtitle: 'Business Valuation Experts',
     title: 'Certified Business Valuation Services and Merger & Acquisition Consulting',
-    description: 'Anchor Business Valuations & Financial Services, LLC is a business valuation, litigation support and merger & acquisition transaction consulting firm. Anchor assists their clients through a broad capacity of services spanning from the determination of the value of a business to consultation on the financial implications and due diligence process of the sale, acquisition or investment in a company.',
     link: '/contact'
   },
   {
     image: '/assets/home/hero-2.png',
     subtitle: 'Industry Leadership',
     title: 'Trisch Garthoeffner Nominated as Chairman of the NACVA Standards Board',
-    description: 'Trisch Garthoeffner, ABV, CVA, MAFF, EA was nominated as Chairman of the National Association of Certified Valuators & Analysts (NACVA) Standards Board, highlighting our commitment to excellence and industry standards.',
     link: '/industry-expertise'
   }
 ];
@@ -54,9 +52,9 @@ const HeroSection = () => {
         </motion.div>
       </AnimatePresence>
 
-      <div className="container-wide relative z-10 py-24 lg:py-32">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="max-w-3xl">
+      <div className="container-wide relative z-10 py-12 lg:py-24">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-8">
             <motion.div
               key={`content-${currentSlide}`}
               initial={{ opacity: 0, y: 20 }}
@@ -70,18 +68,14 @@ const HeroSection = () => {
                 </span>
               </div>
 
-              <h1 className="font-playfair text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground leading-tight mb-6">
+              <h2 className="font-playfair text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-primary-foreground leading-tight mb-6">
                 {slides[currentSlide].title}
-              </h1>
-
-              <p className="font-inter text-lg text-primary-foreground/80 mb-8 max-w-2xl">
-                {slides[currentSlide].description}
-              </p>
+              </h2>
             </motion.div>
           </div>
 
           {/* Right Side - Slide Controls */}
-          <div className="hidden lg:flex flex-col items-end justify-center space-y-6">
+          <div className="hidden lg:flex lg:col-span-4 flex-col items-end justify-center space-y-6">
             <div className="flex gap-4">
               <button onClick={prevSlide} className="p-2 border border-white/20 rounded-full hover:bg-white/10 text-white transition-colors">
                 <ChevronLeft className="w-6 h-6" />

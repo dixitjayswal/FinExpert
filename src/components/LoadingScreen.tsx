@@ -38,7 +38,7 @@ const LoadingScreen = () => {
               className="mb-8"
             >
               <span className="text-3xl md:text-4xl font-display font-bold text-white">
-                <span className="text-gold">F</span>INANCE
+                <span className="text-gold">A</span>NCHOR
                 <span className="text-gold">.</span>
               </span>
             </motion.div>
@@ -63,9 +63,9 @@ const LoadingScreen = () => {
               {progress}%
             </motion.span>
           </div>
-        </motion.div>
+        </motion.div >
       )}
-    </AnimatePresence>
+    </AnimatePresence >
   );
 };
 
