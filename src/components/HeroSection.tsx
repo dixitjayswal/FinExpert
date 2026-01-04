@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 const slides = [
   {
-    image: '/assets/home/image8.png',
+    image: '/assets/home/hero-1.png',
     subtitle: 'Business Valuation Experts',
     title: 'Certified Business Valuation Services and Merger & Acquisition Consulting',
     description: 'Anchor Business Valuations & Financial Services, LLC is a business valuation, litigation support and merger & acquisition transaction consulting firm. Anchor assists their clients through a broad capacity of services spanning from the determination of the value of a business to consultation on the financial implications and due diligence process of the sale, acquisition or investment in a company.',
     link: '/contact'
   },
   {
-    image: '/assets/home/image13.png',
+    image: '/assets/home/hero-2.png',
     subtitle: 'Industry Leadership',
     title: 'Trisch Garthoeffner Nominated as Chairman of the NACVA Standards Board',
     description: 'Trisch Garthoeffner, ABV, CVA, MAFF, EA was nominated as Chairman of the National Association of Certified Valuators & Analysts (NACVA) Standards Board, highlighting our commitment to excellence and industry standards.',
@@ -77,15 +77,6 @@ const HeroSection = () => {
               <p className="font-inter text-lg text-primary-foreground/80 mb-8 max-w-2xl">
                 {slides[currentSlide].description}
               </p>
-
-              <div className="flex flex-wrap gap-4">
-                <Link to={slides[currentSlide].link}>
-                  <Button variant="gold" size="xl">
-                    Learn More
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </Link>
-              </div>
             </motion.div>
           </div>
 
@@ -119,8 +110,8 @@ const HeroSection = () => {
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`rounded-full transition-all duration-300 ${index === currentSlide
-                  ? 'w-3 h-3 bg-gold scale-125'
-                  : 'w-2 h-2 bg-white/40 hover:bg-white/60'
+                ? 'w-3 h-3 bg-gold scale-125'
+                : 'w-2 h-2 bg-white/40 hover:bg-white/60'
                 }`}
               aria-label={`Go to slide ${index + 1}`}
             />

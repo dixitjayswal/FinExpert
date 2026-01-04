@@ -119,7 +119,7 @@ const Header = () => {
           <Link to="/" className="flex items-center gap-2">
             <img
               src="/assets/logo.png"
-              alt="FinExpert Logo"
+              alt="Anchor Business Valuations Logo"
               className="h-10 w-auto object-contain"
             />
           </Link>
