@@ -83,9 +83,7 @@ const HeroSection = () => {
                 <ChevronRight className="w-6 h-6" />
               </button>
             </div>
-            <div className="text-primary-foreground/30 font-playfair text-9xl font-bold">
-              0{currentSlide + 1}.
-            </div>
+  
           </div>
         </div>
       </div>
