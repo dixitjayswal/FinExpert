@@ -12,7 +12,7 @@ const slides = [
     link: '/contact'
   },
   {
-    image: '/assets/home/hero-2.png',
+    image: '/assets/home/hero-owner-v2.png',
     subtitle: 'Industry Leadership',
     title: 'Trisch Garthoeffner Nominated as Chairman of the NACVA Standards Board',
     link: '/industry-expertise'

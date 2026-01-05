@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Clock, Send, Loader2 } from 'lucide-react';
 import Header from '@/components/Header';
@@ -32,6 +32,9 @@ const contactInfo = [
 ];
 
 const Contact = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',

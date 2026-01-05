@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -56,10 +57,12 @@ const CTASection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-wrap justify-center gap-4"
           >
-            <Button variant="gold" size="xl">
-              Schedule Consultation
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            <Link to="/contact">
+              <Button variant="gold" size="xl">
+                Schedule Consultation
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
             <Button variant="heroOutline" size="xl">
               <Phone className="w-5 h-5 mr-2" />
               +1 (555) 123-4567

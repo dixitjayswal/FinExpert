@@ -9,6 +9,8 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
+import FounderSection from '@/components/FounderSection';
+
 
 const Index = () => {
   return (
@@ -19,6 +21,7 @@ const Index = () => {
       <ServicesSection />
       <StatsSection />
       <WhyUsSection />
+      <FounderSection />
       <AboutAnchorSection />
       <TestimonialsSection />
       <CTASection />
