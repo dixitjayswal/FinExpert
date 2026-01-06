@@ -32,7 +32,7 @@ const HeroSection = () => {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-20">
+    <section id="home" className="relative min-h-[100dvh] flex items-center overflow-hidden pt-20">
       <AnimatePresence mode='wait'>
         <motion.div
           key={currentSlide}
@@ -47,7 +47,8 @@ const HeroSection = () => {
             alt="Slide background"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/60" />
+          {/* Enhanced overlay for better text readability on mobile */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/60 md:to-primary/40" />
         </motion.div>
       </AnimatePresence>
 
@@ -61,13 +62,13 @@ const HeroSection = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="h-px w-12 bg-gold" />
-                <span className="text-gold font-inter text-sm font-medium tracking-widest uppercase">
+                <div className="h-px w-8 md:w-12 bg-gold" />
+                <span className="text-gold font-inter text-xs md:text-sm font-medium tracking-widest uppercase">
                   {slides[currentSlide].subtitle}
                 </span>
               </div>
 
-              <h2 className="font-playfair text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-primary-foreground leading-tight mb-6">
+              <h2 className="font-playfair text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground leading-tight mb-8 drop-shadow-sm break-words max-w-full">
                 {slides[currentSlide].title}
               </h2>
             </motion.div>

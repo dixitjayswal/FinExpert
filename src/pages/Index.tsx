@@ -14,7 +14,7 @@ import FounderSection from '@/components/FounderSection';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background w-full overflow-x-hidden">
       <Header />
       <HeroSection />
       <MarqueeSection />

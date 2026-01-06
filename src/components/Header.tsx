@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, ArrowUpRight, Search } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 
 interface NavItem {
   name: string;
@@ -65,7 +66,11 @@ const navItems: NavItem[] = [
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileOpenDropdowns, setMobileOpenDropdowns] = useState<string[]>([]);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  
+  useBodyScrollLock(isMobileMenuOpen);
+
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
@@ -80,8 +85,19 @@ const Header = () => {
   const handleNavClick = () => {
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
+    setMobileOpenDropdowns([]);
     // Scroll to top on navigation
     window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  const toggleMobileDropdown = (name: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setMobileOpenDropdowns(prev =>
+      prev.includes(name)
+        ? prev.filter(item => item !== name)
+        : [...prev, name]
+    );
   };
 
   const renderNavLink = (href: string, children: React.ReactNode, className: string, onClick?: () => void) => {
@@ -199,9 +215,9 @@ const Header = () => {
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`lg:hidden p-2 ${isScrolled || !isHomePage ? 'text-primary' : 'text-primary-foreground'}`}
+          className={`lg:hidden p-2 -mr-2 ${isScrolled || !isHomePage ? 'text-primary' : 'text-primary-foreground'}`}
         >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isMobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
         </button>
       </div>
 
@@ -209,44 +225,95 @@ const Header = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-background border-t border-border"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-50 bg-background flex flex-col lg:hidden overflow-y-auto"
           >
-            <nav className="container-wide py-6 flex flex-col gap-2">
+            <div className="w-full px-4 sm:px-6 py-5 flex items-center justify-between border-b border-border">
+              <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2">
+                <img
+                  src="/assets/logo.png"
+                  alt="Anchor Business Valuations Logo"
+                  className="h-10 w-auto object-contain"
+                />
+              </Link>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-2 -mr-2 text-foreground hover:text-primary transition-colors"
+                aria-label="Close menu"
+              >
+                <X className="w-7 h-7" />
+              </button>
+            </div>
+
+            <nav className="flex-1 container-wide py-8 flex flex-col gap-6">
               {navItems.map((item) => (
-                <div key={item.name}>
-                  <Link
-                    to={item.href}
-                    onClick={() => !item.hasDropdown && setIsMobileMenuOpen(false)}
-                    className="flex items-center justify-between font-inter text-foreground hover:text-accent py-3 transition-colors"
-                  >
-                    {item.name}
-                    {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
-                  </Link>
-                  {item.hasDropdown && item.dropdownItems && (
-                    <div className="pl-4 border-l border-border ml-2">
-                      {item.dropdownItems.map((dropItem) => (
-                        <Link
-                          key={dropItem.name}
-                          to={dropItem.href}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="block py-2 text-sm text-muted-foreground hover:text-accent transition-colors"
-                        >
-                          {dropItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                <div key={item.name} className="border-b border-border/40 last:border-0 pb-4 last:pb-0">
+                  <div className="flex items-center justify-between">
+                    <Link
+                      to={item.href}
+                      onClick={(e) => {
+                        if (item.hasDropdown) {
+                          e.preventDefault();
+                          toggleMobileDropdown(item.name, e);
+                        } else {
+                          setIsMobileMenuOpen(false);
+                          setMobileOpenDropdowns([]);
+                        }
+                      }}
+                      className="flex-1 py-2 font-playfair text-xl font-medium text-foreground hover:text-accent transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                    {item.hasDropdown && (
+                      <button
+                        onClick={(e) => toggleMobileDropdown(item.name, e)}
+                        className="p-2 text-muted-foreground hover:text-accent transition-colors"
+                      >
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${mobileOpenDropdowns.includes(item.name) ? 'rotate-180' : ''}`} />
+                      </button>
+                    )}
+                  </div>
+                  
+                  <AnimatePresence>
+                    {item.hasDropdown && item.dropdownItems && mobileOpenDropdowns.includes(item.name) && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pl-4 mt-2 flex flex-col gap-3">
+                          {item.dropdownItems.map((dropItem) => (
+                            <Link
+                              key={dropItem.name}
+                              to={dropItem.href}
+                              onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                setMobileOpenDropdowns([]);
+                              }}
+                              className="block py-2 text-base text-muted-foreground hover:text-accent transition-colors font-inter"
+                            >
+                              {dropItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
-              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="cta" size="lg" className="mt-4 w-full">
-                  Get In Touch
-                  <ArrowUpRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
+              
+              <div className="mt-8">
+                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button variant="cta" size="lg" className="w-full justify-center text-lg py-6">
+                    Get In Touch
+                    <ArrowUpRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+              </div>
             </nav>
           </motion.div>
         )}

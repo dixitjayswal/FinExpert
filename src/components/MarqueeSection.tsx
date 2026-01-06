@@ -12,7 +12,7 @@ const MarqueeSection = () => {
         <div className="bg-white py-10 overflow-hidden border-y border-gray-100 z-20 relative">
             <div className="flex overflow-hidden group">
                 <motion.div
-                    className="flex gap-36 whitespace-nowrap items-center"
+                    className="flex gap-12 md:gap-36 whitespace-nowrap items-center"
                     animate={{ x: [0, -1000] }}
                     transition={{
                         repeat: Infinity,

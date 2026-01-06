@@ -29,7 +29,7 @@ const FounderSection = () => {
               <img
                 src={aboutImage}
                 alt="Trisch Garthoeffner"
-                className="w-full h-[600px] object-cover object-top"
+                className="w-full h-[450px] lg:h-[600px] object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
             </div>
@@ -40,7 +40,7 @@ const FounderSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="absolute -bottom-6 -right-6 bg-accent text-primary px-8 py-6 rounded-xl shadow-gold"
+              className="absolute -bottom-6 right-4 lg:-right-6 bg-accent text-primary px-8 py-6 rounded-xl shadow-gold"
             >
               <div className="text-4xl font-playfair font-bold">20+</div>
               <div className="text-sm font-inter">Years Experience</div>
